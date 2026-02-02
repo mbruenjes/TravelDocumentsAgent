@@ -1,0 +1,6 @@
+/.env
+/playwright-data-check24
+/playwright-data-tui
+/.idea
+/.claude
+**/.adk
