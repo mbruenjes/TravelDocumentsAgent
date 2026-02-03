@@ -4,11 +4,12 @@ version = "0.1.0"
 description = "Travel Documents Agent - Creates visual travel documents with local events and attractions using Google ADK"
 requires-python = ">=3.12"
 dependencies = [
-    "google-adk>=0.1.0",
+    "google-adk[a2a]>=0.1.0",
     "google-genai>=1.0.0",
     "python-dotenv>=1.0.0",
     "jinja2>=3.1.0",
     "weasyprint>=62.0",
+    "uvicorn>=0.30.0",
 ]
 
 [project.optional-dependencies]

@@ -34,20 +34,15 @@ copy .env.example .env
 
 ## Usage
 
-### Web UI with A2A (Recommended)
+### A2A Server (Recommended)
 ```bash
-adk web --a2a travel_documents_agent
+uvicorn main:a2a_app --host localhost --port 8002
 ```
-This starts the web UI AND exposes the A2A endpoint at `/.well-known/agent.json`.
+This exposes the agent via A2A protocol. The agent card is available at `http://localhost:8002/.well-known/agent-card.json`.
 
-### API Server with A2A (Headless)
+### Alternative: Run from package
 ```bash
-adk api_server --a2a travel_documents_agent
-```
-
-### Web UI Only (No A2A)
-```bash
-adk web travel_documents_agent
+uvicorn travel_documents_agent:a2a_app --host localhost --port 8002
 ```
 
 ### CLI Mode
@@ -87,24 +82,34 @@ The agent generates travel documents in the `travel_documents/` folder:
 
 ## A2A Integration
 
-Google ADK has built-in A2A support. Just add the `--a2a` flag:
+This agent uses the `to_a2a()` function from Google ADK to expose itself via the A2A protocol.
+
+### Start the A2A Server
 
 ```bash
-adk web --a2a travel_documents_agent
+uvicorn main:a2a_app --host localhost --port 8002
 ```
 
 This exposes:
-- **Agent Card**: `http://localhost:8000/.well-known/agent.json`
-- **A2A Endpoints**: For task creation and message exchange
+- **Agent Card**: `http://localhost:8002/.well-known/agent-card.json`
+- **A2A RPC Endpoint**: `http://localhost:8002/`
+
+### How it works
+
+The `to_a2a()` function wraps the ADK agent and:
+- Auto-generates an agent card from the agent metadata
+- Handles A2A protocol compatibility
+- Provides direct control over service exposure
 
 ### Connecting from Another Agent
 
-Other ADK agents can discover and communicate with this agent using the standard A2A protocol at the `/.well-known/agent.json` endpoint.
+Other agents can discover this agent at the agent card URL and send messages via the A2A protocol.
 
 ## Dependencies
 
-- `google-adk`: Google Agent Development Kit
+- `google-adk[a2a]`: Google Agent Development Kit with A2A support
 - `google-genai`: Gemini API client
 - `jinja2`: HTML templating
 - `weasyprint`: PDF generation (optional)
+- `uvicorn`: ASGI server for A2A
 - `python-dotenv`: Environment variable management

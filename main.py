@@ -1,9 +1,8 @@
 """Main entry point for the Travel Documents Agent.
 
 Usage:
-  ADK Web UI with A2A:  adk web --a2a travel_documents_agent
-  ADK API Server:       adk api_server --a2a travel_documents_agent
-  CLI Mode:             python main.py
+  A2A Server:  uvicorn main:a2a_app --host localhost --port 8002
+  CLI Mode:    python main.py
 """
 
 import asyncio
@@ -16,7 +15,7 @@ from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
-from travel_documents_agent import root_agent
+from travel_documents_agent import root_agent, a2a_app
 
 
 # Example travel data for testing
@@ -62,8 +61,8 @@ async def run_cli():
     print("=" * 70)
     print("Travel Documents Agent - CLI Mode")
     print("=" * 70)
-    print("\nFor A2A mode: adk web --a2a travel_documents_agent")
-    print("For web UI:   adk web travel_documents_agent")
+    print("\nFor A2A mode: uvicorn main:a2a_app --host localhost --port 8002")
+    print("Agent card:   http://localhost:8002/.well-known/agent-card.json")
     print("\nThis agent creates visual travel documents with local events,")
     print("attractions, and recommendations based on your travel booking.")
     print("\nCommands:")

@@ -1,0 +1,41 @@
+{
+  "name": "TravelDocumentsAgent",
+  "description": "Creates comprehensive, visually appealing travel documents with local events, attractions, restaurants, and recommendations. Receives travel booking details and generates beautiful HTML/PDF documents enriched with destination research via Google Search.",
+  "url": "http://localhost:8002/a2a/travel_documents_agent",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "TravelDocumentsAgent Demo",
+    "url": "http://localhost:8002"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": ["text"],
+  "defaultOutputModes": ["text"],
+  "skills": [
+    {
+      "id": "create_travel_document",
+      "name": "Create Travel Document",
+      "description": "Creates a comprehensive, visually appealing travel document with local events, attractions, restaurants, and activities based on travel booking information.",
+      "tags": ["travel", "document", "itinerary", "events", "attractions"],
+      "examples": [
+        "Create a travel document for my trip to Mallorca from July 15-22",
+        "Generate a travel itinerary with local events and attractions",
+        "Make a travel document with restaurant recommendations for my Paris trip"
+      ]
+    },
+    {
+      "id": "search_destination_info",
+      "name": "Search Destination Info",
+      "description": "Searches for local events, festivals, attractions, restaurants, and activities at a travel destination during specific dates using Google Search.",
+      "tags": ["events", "attractions", "activities", "search", "google"],
+      "examples": [
+        "Find events in Barcelona during August 2025",
+        "What attractions are there in Rome?",
+        "Search for restaurants near my hotel in Tokyo"
+      ]
+    }
+  ]
+}
