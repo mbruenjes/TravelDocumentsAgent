@@ -13,7 +13,7 @@ save_document_tool = FunctionTool(func=save_document_to_file)
 
 document_generator_agent = Agent(
     name="DocumentGeneratorAgent",
-    model="gemini-2.0-flash",
+    model="gemini-2.5-pro",
     description="Generates visually appealing HTML/PDF travel documents "
                 "from travel booking information and local recommendations.",
     instruction="""You are a travel document specialist that creates beautiful, comprehensive travel documents.

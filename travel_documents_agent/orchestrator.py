@@ -16,7 +16,7 @@ research_and_generate_agent = SequentialAgent(
 
 root_agent = Agent(
     name="TravelDocumentsOrchestrator",
-    model="gemini-2.0-flash",
+    model="gemini-2.5-pro",
     description="Creates comprehensive, visually appealing travel documents with local events, "
                 "attractions, and recommendations based on travel booking information.",
     instruction="""You are a Travel Documents Orchestrator that creates beautiful, comprehensive travel documents.

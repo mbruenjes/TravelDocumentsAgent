@@ -5,7 +5,7 @@ from google.adk.tools import google_search
 
 events_search_agent = Agent(
     name="EventsSearchAgent",
-    model="gemini-2.0-flash",
+    model="gemini-2.5-pro",
     description="Searches for local events, attractions, restaurants, and activities "
                 "at a travel destination during specific dates using Google Search.",
     instruction="""You are a travel research specialist that finds interesting events, attractions,

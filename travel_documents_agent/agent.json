@@ -3,6 +3,7 @@
   "description": "Creates comprehensive, visually appealing travel documents with local events, attractions, restaurants, and recommendations. Receives travel booking details and generates beautiful HTML/PDF documents enriched with destination research via Google Search.",
   "url": "http://localhost:8002/a2a/travel_documents_agent",
   "version": "1.0.0",
+  "iconUrl": "https://cdn-icons-png.flaticon.com/512/8863/8863767.png",
   "provider": {
     "organization": "TravelDocumentsAgent Demo",
     "url": "http://localhost:8002"
