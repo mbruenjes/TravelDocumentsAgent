@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Document - Mallorca, Spanien</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #57c5b6;
+            --accent-color: #ffc93c;
+            --dark-color: #002b5b;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --text-light: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background: var(--light-color);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 50px;
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .travel-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header .subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .booking-ref {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* Trip Overview */
+        .trip-overview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .overview-item {
+            padding: 25px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .overview-item:last-child {
+            border-right: none;
+        }
+
+        .overview-item .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .overview-item .value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        /* Hotel Card */
+        .hotel-card {
+            background: linear-gradient(to right, #f8f9fa, white);
+            border-radius: 15px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            border: 1px solid #eee;
+        }
+
+        .hotel-info h3 {
+            font-size: 24px;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .hotel-stars {
+            color: var(--accent-color);
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .hotel-detail {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .hotel-detail strong {
+            color: var(--text-color);
+        }
+
+        .dates-box {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .date-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .date-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Flight Info */
+        .flight-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .flight-icon {
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+
+        .flight-details {
+            flex: 1;
+        }
+
+        .flight-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        .flight-info {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* Events & Attractions Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #eee;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .info-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .info-card .meta {
+            font-size: 12px;
+            color: var(--secondary-color);
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Tips Section */
+        .tips-list {
+            list-style: none;
+        }
+
+        .tips-list li {
+            padding: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tips-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tips-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .tips-list li strong {
+            color: var(--primary-color);
+        }
+
+        /* Weather Box */
+        .weather-box {
+            background: linear-gradient(135deg, var(--accent-color), #ffdb70);
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .weather-icon {
+            font-size: 50px;
+        }
+
+        .weather-info h4 {
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .weather-info p {
+            color: var(--text-color);
+        }
+
+        /* Price Footer */
+        .price-footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .price-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 12px;
+        }
+
+        .footer p {
+            margin-bottom: 5px;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .info-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="travel-icon">✈️</div>
+                <h1>Mallorca, Spanien</h1>
+                <p class="subtitle">Your Travel Document</p>
+                <span class="booking-ref">Booking Reference: TRV-202602030958</span>
+            </div>
+        </header>
+
+        <!-- Trip Overview -->
+        <div class="trip-overview">
+            <div class="overview-item">
+                <div class="label">Traveler</div>
+                <div class="value">Meine Frau und Ich</div>
+            </div>
+            <div class="overview-item">
+                <div class="label">Duration</div>
+                <div class="value">6 Nights</div>
+            </div>
+            <div class="overview-item">
+                <div class="label">Check-in</div>
+                <div class="value">Friday, May 01, 2026</div>
+            </div>
+        </div>
+
+        <!-- Accommodation Section -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon">🏨</span>
+                Accommodation
+            </h2>
+            <div class="hotel-card">
+                <div class="hotel-info">
+                    <h3>Hotel Son Julia Country House</h3>
+                    <div class="hotel-stars">★★★★★</div>
+                    <p class="hotel-detail"><strong>Address:</strong> Llucmajor, Mallorca</p>
+                    <p class="hotel-detail"><strong>Room Type:</strong> Not specified</p>
+                    <p class="hotel-detail"><strong>Board:</strong> Frühstück</p>
+                </div>
+                <div class="dates-box">
+                    <div class="date-row">
+                        <span>Check-in</span>
+                        <strong>Friday, May 01, 2026</strong>
+                    </div>
+                    <div class="date-row">
+                        <span>Check-out</span>
+                        <strong>Thursday, May 07, 2026</strong>
+                    </div>
+                    <div class="date-row">
+                        <span>Nights</span>
+                        <strong>6</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flights Section -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon">✈️</span>
+                Flights
+            </h2>
+            <div class="flight-card">
+                <div class="flight-icon">🛫</div>
+                <div class="flight-details">
+                    <div class="flight-label">Outbound Flight</div>
+                    <div class="flight-info">Direktflug ab Hannover</div>
+                </div>
+            </div>
+            <div class="flight-card">
+                <div class="flight-icon">🛬</div>
+                <div class="flight-details">
+                    <div class="flight-label">Return Flight</div>
+                    <div class="flight-info">Direktflug nach Hannover</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weather Section -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon">🌤️</span>
+                Weather Forecast
+            </h2>
+            <div class="weather-box">
+                <div class="weather-icon">☀️</div>
+                <div class="weather-info">
+                    <h4>Expected Weather</h4>
+                    <p>Das Wetter auf Mallorca ist im Mai warm und angenehm. Die durchschnittlichen Höchsttemperaturen liegen zwischen 16 °C und 23 °C. Es ist jedoch wichtig zu beachten, dass die Temperaturen tagsüber gelegentlich bis auf 30 °C steigen können. Die Nachttemperaturen können auf etwa 12 °C sinken.</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Events Section -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon">🎉</span>
+                Local Events During Your Stay
+            </h2>
+            <div class="card-grid">
+                
+                <div class="info-card">
+                    <h4>Lokale Feste im Mai</h4>
+                    <p>Im Mai finden auf Mallorca zahlreiche lokale Feste statt, die die reiche Kultur und Tradition der Insel widerspiegeln. Zu den Hauptattraktionen gehören die lokalen Märkte in verschiedenen Städten und Gemeinden, auf denen Besucher die Möglichkeit haben, in die Authentizität des mallorquinischen Lebens einzutauchen. Diese Märkte umfassen in der Regel Kunsthandwerksmärkte, Ausstellungen von landwirtschaftlichen Produkten, Viehausstellungen und Vorführungen alter Handwerkskunst.</p>
+                    <div class="meta">
+                        <span>📅 Mai</span>
+                        <span>📍 Mallorca</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Costitx in Bloom Fair</h4>
+                    <p>Im Herzen Mallorcas, im Dorf Costitx, findet jährlich die "Fira Costitx en Flor" statt. Dieses Fest, das im Mai stattfindet, ist eine Hommage an die Farbexplosion und das Leben, die diese Jahreszeit auf der Insel auszeichnen, mit besonderem Schwerpunkt auf Blüte und Gartenbau. Die Straßen und Plätze der Stadt verwandeln sich in einen Teppich aus bunten Blumen, der eine festliche Atmosphäre schafft.</p>
+                    <div class="meta">
+                        <span>📅 Mai</span>
+                        <span>📍 Costitx</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Veranstaltungen in Palma de Mallorca</h4>
+                    <p>Adam Beyer, Eric Prydz, Alan Fitzpatrick, Amelie Lens, Bart Skils, Chris Avantgarde, Eli Brown, Joseph Capriati, Massano, Tini Gessler in Palma de Mallorca findet am Fr, 08 Mai 2026 ab 20:00 Uhr im AMØK, Palma de Mallorca, statt. Pablo López in Palma findet am Sa, 02 Mai 2026 ab 21:00 Uhr im Trui Teatre, Palma de Mallorca, statt.</p>
+                    <div class="meta">
+                        <span>📅 02.05.2026</span>
+                        <span>📍 Palma de Mallorca</span>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        
+        <!-- Attractions Section -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon">🏛️</span>
+                Must-See Attractions
+            </h2>
+            <div class="card-grid">
+                
+                <div class="info-card">
+                    <h4>Kathedrale von Santa Maria de Palma (La Seu)</h4>
+                    <p>Eine der schönsten gotischen Kathedralen Europas mit beeindruckenden Glasfenstern. Der Eintritt kostet ca. 16 $. Sie befindet sich im historischen Zentrum von Palma de Mallorca. Die Kirche gilt derzeit als der meistbesuchte Ort in Mayora auf Trip. Adviser.</p>
+                    <div class="meta">
+                        <span>📍 Palma de Mallorca</span>
+                        <span>💰 16 $</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Tramuntana-Gebirge</h4>
+                    <p>Dieses Gebirge erstreckt sich über den gesamten Norden der Insel und bietet kurvenreiche Straßen, weite Kiefernwälder und einige epische Aussichtspunkte. Der Tramuntana National Park lässt sich am besten mit einem Mietwagen erkunden. Sie können dort den Tag mit der Durchfahrt durch den Park verbringen und an den zahlreichen Aussichtspunkten, Dörfern und künstlichen Stauseen halten.</p>
+                    <div class="meta">
+                        <span>📍 Tramuntana-Gebirge</span>
+                        <span>💰 Mietwagen</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Capocorb Vell (Llucmajor)</h4>
+                    <p>eine archäologische Stätte, die einen Einblick in die prähistorische Geschichte Mallorcas bietet. Es ist eines der bedeutendsten talayotischen Dörfer der Insel.</p>
+                    <div class="meta">
+                        <span>📍 Llucmajor</span>
+                        <span>💰 Not specified</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Cuevas del Drach</h4>
+                    <p>Diese beeindruckenden Höhlen mit Stalaktiten und Stalagmiten sind ein Muss. Sie beinhalten einen unterirdischen See, in dem ein klassisches Konzert aufgeführt wird. Tickets kosten etwa 24 $.</p>
+                    <div class="meta">
+                        <span>📍 Cuevas del Drach</span>
+                        <span>💰 24 $</span>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        
+        <!-- Restaurants Section -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon">🍽️</span>
+                Recommended Restaurants
+            </h2>
+            <div class="card-grid">
+                
+                <div class="info-card">
+                    <h4>Sa Magrana Restaurant (Hotel Son Julia)</h4>
+                    <p>Das Restaurant Sa Magrana serviert mediterrane Küche und lokale Spezialitäten wie mallorquinisches Lamm. Viele Zutaten stammen aus der Region und die puristische Küche sorgt dafür, dass die Aromen der Hauptzutaten erhalten bleiben. Die Speisekarte wird durch köstliche Weine ergänzt, darunter die eigene Weinproduktion des Hotels.</p>
+                    <div class="meta">
+                        <span>🍴 mediterrane Küche</span>
+                        <span>📍 Hotel Son Julia</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Las Bóvedas Restaurant (Hotel Son Julia)</h4>
+                    <p>Das preisgekrönte Las Bóvedas befindet sich im wunderschönen Son Julia Country House Hotel aus dem 15. Jahrhundert in der Nähe von Llucmajor und verfügt über originale Sandsteingewölbe (von denen das Restaurant seinen Namen hat), eine gemütliche Atmosphäre und eine große Terrasse für Mahlzeiten im Freien mit Blick auf den hoteleigenen Weinberg.</p>
+                    <div class="meta">
+                        <span>🍴 Not specified</span>
+                        <span>📍 Hotel Son Julia Country House, Llucmajor</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Restaurants in der Nähe des Hotels</h4>
+                    <p>Andreu Genestra, La Fortaleza, Tess de Mar und Periplo Portixol sind Restaurants in der Nähe des Hotels.</p>
+                    <div class="meta">
+                        <span>🍴 Not specified</span>
+                        <span>📍 Llucmajor</span>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        
+        <!-- Activities Section -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon">🎯</span>
+                Activities & Experiences
+            </h2>
+            <div class="card-grid">
+                
+                <div class="info-card">
+                    <h4>Entspannung am Strand</h4>
+                    <p>Verbringen Sie entspannte Stunden an den Stränden von El Arenal und Can Pastilla.</p>
+                    <div class="meta">
+                        <span>⏱️ Not specified</span>
+                        <span>💰 Not specified</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Spaziergang in Palma de Mallorca</h4>
+                    <p>Sie können die vielen Sehenswürdigkeiten von Palma an einem Tagesausflug besichtigen, auf Pac Delon, der goldenen Meile der Designer- und High-Street-Läden, einkaufen gehen und die alten Monumente, Gebäude und Souvenirläden der Altstadt durchstöbern.</p>
+                    <div class="meta">
+                        <span>⏱️ Not specified</span>
+                        <span>💰 Not specified</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Wellness im Hotel</h4>
+                    <p>Nutzen Sie den Wellnessbereich des Son Julia Country House für zusätzliche Entspannung.</p>
+                    <div class="meta">
+                        <span>⏱️ Not specified</span>
+                        <span>💰 Not specified</span>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        
+        <!-- Practical Tips Section -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="icon">💡</span>
+                Practical Tips
+            </h2>
+            <ul class="tips-list">
+                
+                <li><strong>Wetter:</strong> Das Wetter auf Mallorca ist im Mai warm und angenehm. Die durchschnittlichen Höchsttemperaturen liegen zwischen 16 °C und 23 °C. Es ist jedoch wichtig zu beachten, dass die Temperaturen tagsüber gelegentlich bis auf 30 °C steigen können. Die Nachttemperaturen können auf etwa 12 °C sinken.</li>
+                
+                <li><strong>Kulturelle Hinweise:</strong> Seien Sie diskret mit Ihrer Kleidung in den Stadtzentren. Nur junge Leute tragen Shorts, während die meisten Berufstätigen Hosen oder Röcke tragen. Es gilt als unhöflich, laute Musik zu spielen. Es ist höflich, jeglichen Müll zu beseitigen.</li>
+                
+                <li><strong>Trinkgeld:</strong> Trinkgeld ist kein vollständig etablierter Brauch, und viele Einheimische geben oft nur wenig Wechselgeld, selbst bei einem beträchtlichen Verzehr. Es ist nicht üblich, in Bars, Cafeterias oder Taxis Trinkgeld zu geben, was aber nicht heißt, dass es nicht geschätzt wird.</li>
+                
+                <li><strong>Neue Touristenregeln:</strong> Achten Sie auf die neuen Vorschriften für Touristen. Die bedeutendste Strafe - 500 € - wird gegen Personen verhängt, die beim Trinken im öffentlichen Raum erwischt werden, während andere Geldstrafen von 400 € für störende Handlungen wie Schreien und Kämpfen gelten. Auch für Nacktheit außerhalb der dafür vorgesehenen Bereiche werden Strafen verhängt, was die Notwendigkeit für Besucher unterstreicht, die lokalen Gepflogenheiten zu befolgen. Für das Wegwerfen von Müll werden zusätzliche Geldstrafen von bis zu 200 € verhängt, was die Bedeutung der Sauberhaltung öffentlicher Bereiche unterstreicht.</li>
+                
+                <li><strong>Sprache:</strong> Bemühen Sie sich, einige grundlegende Wörter auf Mallorquinisch zu lernen, um die lokale Kultur zu würdigen.</li>
+                
+            </ul>
+        </section>
+        
+
+        <!-- Price Footer -->
+        <div class="price-footer">
+            <div>
+                <div class="price-label">Total Trip Cost</div>
+            </div>
+            <div class="price-value">2400€</div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Document generated on February 03, 2026 at 09:58</p>
+            <p>Have a wonderful trip! 🌴</p>
+        </footer>
+    </div>
+</body>
+</html>
